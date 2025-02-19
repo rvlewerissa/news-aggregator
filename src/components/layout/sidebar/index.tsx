@@ -1,10 +1,7 @@
-'use client';
-
 import * as React from 'react';
 import { Newspaper, FolderSearch, RssIcon } from 'lucide-react';
 
 import NavMain from '@/components/layout/sidebar/NavMain';
-import NavHeadlines from '@/components/layout/sidebar/NavHeadlines';
 import { Sidebar, SidebarContent, SidebarRail } from '@/components/ui/sidebar';
 
 const data = {
@@ -16,6 +13,11 @@ const data = {
     },
   ],
   navMain: [
+    {
+      title: 'Top Headlines',
+      url: '#',
+      icon: Newspaper,
+    },
     {
       title: 'Categories',
       url: '#',
@@ -78,7 +80,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible='icon' {...props}>
       <SidebarContent>
-        <NavHeadlines projects={data.headline} />
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarRail />
