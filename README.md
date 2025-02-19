@@ -1,40 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+## Getting started
 
-## Getting Started
+_TODO_
 
-First, run the development server:
+## Technical Decision
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Next.js](http://nextjs.org/docs/)
+- [Typescript](https://www.typescriptlang.org/)
+- [ShadCDN](https://ui.shadcn.com/) + [Radix UI](https://www.radix-ui.com/)
+- [Tanstack React Query](https://tanstack.com/query/latest)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Reasoning:** fast to develop with, easy to maintain, and scalable if needed. This stack provides a perfect balance between speed, type safety, UI flexibility, and data fetching efficiency. It is perfect for small app under tight deadlines.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Routing
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+| Route                 | Description                    |
+| --------------------- | ------------------------------ |
+| `/`                   | display headline news          |
+| `categories`          | display list of all categories |
+| `/sources`            | display list of all sources    |
+| `/categories/all`     | fetch from all categories      |
+| `/categories/[query]` | fetch from specific categories |
+| `/sources/all`        | fetch from all sources         |
+| `/sources/[query]`    | fetch from specific source     |
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Rendering strategy
 
-## Learn More
+We will use SSG (Static Side Generation) + ISR (Incremental Static Rendering), with server and client side data fetching.
 
-To learn more about Next.js, take a look at the following resources:
+**Reasoning:**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- Minimize API requests to third-party providers to prevent rate limiting and reduce API costs.
+- Reduce server load (since SSG pre-renders content), great scalability for large traffic.
+- SEO-friendly
+- The user is expected to not rely on this app for urgent news and to tolerate a slight delay (~1 minute) in updating the latest headlines. Therefore, usage for ISR is possible.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### API
 
-## Deploy on Vercel
+**Source**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [NewsAPI.org](https://newsapi.org/docs)
+- [The Guardian](https://open-platform.theguardian.com/documentation/)
+- [New York Times](https://developer.nytimes.com/apis)
+- [BBC News](https://www.bbc.co.uk/developer/technology/apis.html)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+**Fetching strategy**
+
+- Use Next.js serverless function to combine multiple API sources, so client-side will fetch from a single source of truth.
+- Initial fetch will use `getStaticProps()`
+- Pagination: use client side data fetching with offset-based pagination (our third party APIs do not support cursor-based pagination)
+- Search by keyword: use client-side data fetching
