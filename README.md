@@ -27,7 +27,7 @@ _TODO_
 
 ### Rendering strategy
 
-We will use SSG (Static Side Generation) + ISR (Incremental Static Rendering), with server and client side data fetching.
+We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), with server and client side data fetching.
 
 **Reasoning:**
 
