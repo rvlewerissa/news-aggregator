@@ -2,7 +2,11 @@
 
 _TODO_
 
-## Technical Decision
+## Features
+
+_TODO_
+
+## Technical Decisions
 
 ### Tech Stack
 
@@ -51,3 +55,7 @@ We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), w
 - Initial fetch will use `getStaticProps()`
 - Pagination: use client side data fetching with offset-based pagination (our third party APIs do not support cursor-based pagination)
 - Search by keyword: use client-side data fetching
+
+### Branching
+
+Since the project is relatively small and has a short development timeline, we’ll use a simple branching strategy, pushing directly to main. However, we’ll use [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format to keep the commit history organized. If the project grows in the future, we can adopt a trunk-based strategy or introduce feature and release branches as needed.
