@@ -18,7 +18,7 @@ import {
 } from '@/components/ui/pagination';
 import { Article } from '@/types';
 import { formatDistanceToNow } from 'date-fns';
-import { fetchArticles } from '@/services';
+import { fetchTopHeadlines } from '@/services';
 
 type HomePageProps = {
   initialArticles: Article[];
@@ -43,7 +43,7 @@ export default function Home({
 
   const { data, isPending, isError } = useQuery<NewsResponse>({
     queryKey: ['top-headlines', currentPage, category],
-    queryFn: () => fetchArticles({ currentPage, category }),
+    queryFn: () => fetchTopHeadlines({ currentPage, category }),
     initialData: { articles: initialArticles, metadata: initialMetadata },
     placeholderData: { articles: initialArticles, metadata: initialMetadata }, // Equivalent to keepPreviousData in v5
   });
@@ -77,7 +77,13 @@ export default function Home({
               )}
               <CardHeader className='flex-1'>
                 <CardTitle className='line-clamp-2 leading-5'>
-                  {article.title}
+                  <a
+                    href={article.url}
+                    target='_blank'
+                    className='hover:underline'
+                  >
+                    {article.title}
+                  </a>
                 </CardTitle>
                 <CardDescription className='line-clamp-4'>
                   {article.description}

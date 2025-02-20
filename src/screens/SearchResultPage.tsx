@@ -1,4 +1,8 @@
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
+import { formatDistanceToNow } from 'date-fns';
+// Components
 import MainLayout from '@/components/layout';
 import {
   Card,
@@ -7,69 +11,48 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { formatDistanceToNow } from 'date-fns';
+import { fetchQuery } from '@/services';
 import { Article } from '@/types';
 
-interface CategoryPageProps {
-  category: string;
+type SearchResultProps = {
   articles: Article[];
-}
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const categories = [
-    'general',
-    'business',
-    'entertainment',
-    'health',
-    'science',
-    'sports',
-    'technology',
-  ];
-
-  const paths = categories.map((category) => ({
-    params: { category },
-  }));
-
-  return { paths, fallback: 'blocking' };
 };
 
-export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
-  params,
-}) => {
-  const category = params?.category as string;
+export default function SearchResultPage({ articles }: SearchResultProps) {
+  const router = useRouter();
+  const query = (router.query.q as string) || '';
+  const fromDate = router.query.from as string;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?category=${category}`
-  );
-  const data = await res.json();
+  const { data, isLoading, isError, refetch } = useQuery({
+    queryKey: ['search-results', query, fromDate],
+    queryFn: () => fetchQuery(query, fromDate),
+    enabled: !!query,
+    initialData: { articles }, // Use SSR-provided articles initially
+  });
 
-  return {
-    props: { category, articles: data.articles || [] },
-    revalidate: 60,
-  };
-};
+  useEffect(() => {
+    if (query) refetch();
+  }, [fromDate, query, refetch]);
 
-export default function CategoryPage({
-  category,
-  articles,
-}: CategoryPageProps) {
   return (
     <MainLayout>
-      <h1 className='text-4xl font-bold tracking-tight font-mono capitalize'>
-        {category}
-      </h1>
+      <h1 className='text-2xl font-bold mb-4'>{`Query: ${query}`}</h1>
+
+      {isLoading && <p>Loading...</p>}
+      {isError && <p>Error fetching articles.</p>}
+
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-        {articles.map((article, i) => (
+        {data?.articles?.map((article: Article, i: number) => (
           <Card key={i} className='flex flex-col'>
+            {article.urlToImage && (
+              <img
+                src={article.urlToImage}
+                alt={article.title}
+                className='w-full h-40 object-cover rounded-t-lg'
+              />
+            )}
             <CardHeader className='flex-1'>
-              {article.urlToImage && (
-                <img
-                  src={article.urlToImage}
-                  alt={article.title}
-                  className='w-full h-40 object-cover rounded-t-lg'
-                />
-              )}
-              <CardTitle className='line-clamp-2'>
+              <CardTitle className='line-clamp-2 leading-5'>
                 <a
                   href={article.url}
                   target='_blank'

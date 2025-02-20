@@ -1,6 +1,6 @@
 import { DEFAULT_PAGE_SIZE } from '@/constant';
 
-export const fetchArticles = async ({
+export const fetchTopHeadlines = async ({
   currentPage,
   category,
 }: {
@@ -17,3 +17,12 @@ export const fetchArticles = async ({
   if (!res.ok) throw new Error('Failed to fetch articles');
   return res.json();
 };
+
+export async function fetchQuery(query: string, from?: string) {
+  let url = `/api/everything?q=${encodeURIComponent(query)}`;
+  if (from) url += `&from=${encodeURIComponent(from)}`;
+
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('Failed to fetch articles');
+  return res.json();
+}

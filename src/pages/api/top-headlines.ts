@@ -24,8 +24,6 @@ export default async function getTopHeadlines(req: Request) {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log(data);
-
     if (!response.ok) {
       return NextResponse.json(
         { error: data.message || 'Failed to fetch news' },

@@ -16,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
           totalResults: data.totalResults,
         },
       },
-      revalidate: 3600,
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Failed to fetch news:', error);
@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
       props: {
         articles: [],
       },
-      revalidate: 3600,
+      revalidate: 60,
     };
   }
 };

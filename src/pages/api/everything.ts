@@ -8,21 +8,15 @@ export default async function getEverything(req: Request) {
     const { searchParams } = new URL(req.url);
     const query = searchParams.get('q') || '';
     const sources = searchParams.get('sources') || '';
-    const domains = searchParams.get('domains') || '';
     const from = searchParams.get('from') || '';
     const to = searchParams.get('to') || '';
-    const sortBy = searchParams.get('sortBy') || 'publishedAt';
-    const language = searchParams.get('language') || 'en';
 
     const url =
       `${BASE_URL}/everything?apiKey=${API_KEY}` +
       `${query ? `&q=${query}` : ''}` +
       `${sources ? `&sources=${sources}` : ''}` +
-      `${domains ? `&domains=${domains}` : ''}` +
       `${from ? `&from=${from}` : ''}` +
-      `${to ? `&to=${to}` : ''}` +
-      `&sortBy=${sortBy}` +
-      `&language=${language}`;
+      `${to ? `&to=${to}` : ''}`;
 
     const response = await fetch(url);
     const data = await response.json();
