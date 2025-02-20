@@ -31,7 +31,7 @@ export default function Header() {
         <Separator orientation='vertical' className='mr-2 h-4' />
         <Input placeholder='Search for news' />
       </header>
-      <div className='flex bg-background h-16 shrink-0 items-center gap-2 px-4'>
+      <div className='flex bg-background h-16 shrink-0 items-center gap-2 px-8'>
         <FilterByCategory />
         <FilterByDate />
       </div>

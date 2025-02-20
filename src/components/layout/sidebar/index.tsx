@@ -15,7 +15,7 @@ const data = {
   navMain: [
     {
       title: 'Top Headlines',
-      url: '#',
+      url: '/',
       icon: Newspaper,
     },
     {
@@ -26,31 +26,31 @@ const data = {
       items: [
         {
           title: 'General',
-          url: '#',
+          url: '/categories/general',
         },
         {
           title: 'Business',
-          url: '#',
+          url: '/categories/business',
         },
         {
           title: 'Entertainment',
-          url: '#',
+          url: '/categories/entertainment',
         },
         {
           title: 'Health',
-          url: '#',
+          url: '/categories/health',
         },
         {
           title: 'Science',
-          url: '#',
+          url: '/categories/science',
         },
         {
           title: 'Sports',
-          url: '#',
+          url: '/categories/sports',
         },
         {
           title: 'Technology',
-          url: '#',
+          url: '/categories/technology',
         },
       ],
     },
