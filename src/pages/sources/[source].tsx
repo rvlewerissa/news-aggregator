@@ -20,7 +20,6 @@ const sources = [
   'cnn',
   'espn',
   'engadget',
-  'financial-post',
   'focus',
   'fortune',
   'fox-news',

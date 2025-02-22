@@ -1,10 +1,28 @@
 ## Getting started
 
-_TODO_
+To run locally:
 
-## Features
+**Production:**
 
-_TODO_
+```
+npm run install --legacy-peer-deps
+npm build
+npm start
+```
+
+**Development Mode:**
+
+```
+npm run install --legacy-peer-deps
+npm build
+npm dev
+```
+
+**Using docker:**
+
+```
+docker compose up --build
+```
 
 ## Technical Decisions
 

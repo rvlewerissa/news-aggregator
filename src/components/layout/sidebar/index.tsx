@@ -102,10 +102,6 @@ const data = {
           url: '/sources/engadget',
         },
         {
-          title: 'Financial Post',
-          url: '/sources/financial-post',
-        },
-        {
           title: 'Focus',
           url: '/sources/focus',
         },

@@ -11,7 +11,6 @@ interface CategoryPageProps {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = [
-    'general',
     'business',
     'entertainment',
     'health',
