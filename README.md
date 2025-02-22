@@ -92,4 +92,8 @@ Since the project is relatively small and has a short development timeline, weâ€
 
 #### Environment Variable
 
-Added .env file just for the sake of this assignment, shouldn't be used on real project environment.
+Added `.env` file just for the sake of this assignment, shouldn't be used on real project environment.
+
+### Caveat
+
+Since SSG revalidates every minute, there is a potential risk of hitting the third-party APIâ€™s rate limit.
