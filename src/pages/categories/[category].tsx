@@ -1,6 +1,7 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import MainLayout from '@/components/layout';
 import CommonResultPage from '@/screens/CommonResultPage';
+import { NEXT_SERVERLESS_API_URL } from '@/constant';
 import { Article } from '@/types';
 
 interface CategoryPageProps {
@@ -32,7 +33,7 @@ export const getStaticProps: GetStaticProps<CategoryPageProps> = async ({
   const category = params?.category as string;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?category=${category}`
+    `${NEXT_SERVERLESS_API_URL}/api/top-headlines?category=${category}`
   );
   const data = await res.json();
 

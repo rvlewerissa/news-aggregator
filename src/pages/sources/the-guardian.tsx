@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import MainLayout from '@/components/layout';
 import GuardianResultPage from '@/screens/GuardianResultPage';
+import { NEXT_SERVERLESS_API_URL } from '@/constant';
 import { GuardianArticle } from '@/types';
 
 interface GuardianPageProps {
@@ -9,9 +10,7 @@ interface GuardianPageProps {
 }
 
 export const getStaticProps: GetStaticProps<GuardianPageProps> = async () => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/guardian/search`
-  );
+  const res = await fetch(`${NEXT_SERVERLESS_API_URL}/api/guardian/search`);
   const data = await res.json();
 
   return {

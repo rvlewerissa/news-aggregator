@@ -1,12 +1,13 @@
 import { GetStaticProps } from 'next';
 import CommonResultPage from '@/screens/CommonResultPage';
 import MainLayout from '@/components/layout';
+import { NEXT_SERVERLESS_API_URL } from '@/constant';
 import { Article } from '@/types';
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?category=general&page=1&pageSize=10`
+      `${NEXT_SERVERLESS_API_URL}/api/top-headlines?category=general&page=1&pageSize=10`
     );
     const data = await res.json();
 

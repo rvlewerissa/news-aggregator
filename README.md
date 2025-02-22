@@ -62,22 +62,21 @@ We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), w
 - [NewsAPI.org](https://newsapi.org/docs)
 - [The Guardian](https://open-platform.theguardian.com/documentation/)
 - [New York Times](https://developer.nytimes.com/apis)
-- [BBC News](https://www.bbc.co.uk/developer/technology/apis.html)
 
-Integrated a custom serverless function in Next.js for this project to keep sensitive credentials (API key) hidden from the frontend and to consolidate communication through a single endpoint, ensuring better scalability in the future.
+Integrated a custom serverless function in Next.js for this project streamlined communication through a single endpoint, ensuring better scalability in the future.
 
 The endpoint is also deployed separately to accomodate usage with Docker (cannot build SSG and fetch its own serverless endpoint on build time inside Docker).
 
-It is deployed to:
+Serverless endpoint is deployed to:
 
 ```
 https://news-aggregator-two-beta.vercel.app
 ```
 
-To use locally, simply replace the following on .env:
+To use locally, simply replace the following on your `.env`:
 
 ```
-NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_SERVERLESS_API_URL=http://localhost:3000
 ```
 
 **Fetching strategy**

@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import MainLayout from '@/components/layout';
 import Link from 'next/link';
+import { NEWS_API_KEY } from '@/constant';
 
 interface SourcesPageProps {
   sources: { id: string; name: string }[];
@@ -8,7 +9,7 @@ interface SourcesPageProps {
 
 export const getStaticProps: GetStaticProps<SourcesPageProps> = async () => {
   const res = await fetch(
-    `https://newsapi.org/v2/top-headlines/sources?apiKey=${process.env.NEWS_API_KEY}`
+    `https://newsapi.org/v2/top-headlines/sources?apiKey=${NEWS_API_KEY}`
   );
   const data = await res.json();
 

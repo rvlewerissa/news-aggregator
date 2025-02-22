@@ -2,6 +2,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import MainLayout from '@/components/layout';
 import CommonResultPage from '@/screens/CommonResultPage';
 import { Article } from '@/types';
+import { NEXT_SERVERLESS_API_URL } from '@/constant';
 
 interface SourcePageProps {
   source: string;
@@ -39,7 +40,7 @@ export const getStaticProps: GetStaticProps<SourcePageProps> = async ({
   const source = params?.source as string;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?sources=${source}`
+    `${NEXT_SERVERLESS_API_URL}/api/top-headlines?sources=${source}`
   );
   const data = await res.json();
 
