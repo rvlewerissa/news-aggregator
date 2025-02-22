@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
-import HomePrimitive from '@/screens/Home';
+import HomePrimitive from '@/screens/CommonResultPage';
+import MainLayout from '@/components/layout';
 import { Article } from '@/types';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -36,6 +37,11 @@ type HomePageProps = {
 
 export default function Home({ articles, metadata }: HomePageProps) {
   return (
-    <HomePrimitive initialArticles={articles} initialMetadata={metadata} />
+    <MainLayout>
+      <h1 className='text-4xl font-bold tracking-tight font-mono capitalize'>
+        Top Headlines
+      </h1>
+      <HomePrimitive initialArticles={articles} initialMetadata={metadata} />
+    </MainLayout>
   );
 }

@@ -1,41 +1,50 @@
-import { GetServerSideProps } from 'next';
+// import { GetServerSideProps } from 'next';
 import SearchResultPage from '@/screens/SearchResultPage';
-import { Article } from '@/types';
+// import { Article } from '@/types';
 
-type SearchPageProps = {
-  articles: Article[];
-};
+// type SearchPageProps = {
+//   articles: Article[];
+//   metadata: { totalResults: number };
+// };
 
-export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
-  context
-) => {
-  const { q } = context.query;
-  const searchQuery = q ? `&q=${encodeURIComponent(q as string)}` : '';
+// export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
+//   context
+// ) => {
+//   const { q } = context.query;
+//   const searchQuery = q ? `&q=${encodeURIComponent(q as string)}` : '';
 
-  try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/search?${searchQuery}`
-    );
+//   try {
+//     const res = await fetch(
+//       `${process.env.NEXT_PUBLIC_SITE_URL}/api/search?${searchQuery}?page=1&pageSize=10`
+//     );
 
-    if (!res.ok) throw new Error('Failed to fetch articles');
+//     if (!res.ok) throw new Error('Failed to fetch articles');
 
-    const data = await res.json();
+//     const data = await res.json();
 
-    return {
-      props: {
-        articles: data.articles || [],
-      },
-    };
-  } catch (error) {
-    console.error(error);
-    return {
-      props: {
-        articles: [],
-      },
-    };
-  }
-};
+//     console.log(data);
 
-export default function SearchPage({ articles }: SearchPageProps) {
-  return <SearchResultPage articles={articles} />;
+//     return {
+//       props: {
+//         articles: data.articles || [],
+//         metadata: {
+//           totalResults: data.totalResults,
+//         },
+//       },
+//     };
+//   } catch (error) {
+//     console.error(error);
+//     return {
+//       props: {
+//         articles: [],
+//         metadata: {
+//           totalResults: 0,
+//         },
+//       },
+//     };
+//   }
+// };
+
+export default function SearchPage() {
+  return <SearchResultPage />;
 }

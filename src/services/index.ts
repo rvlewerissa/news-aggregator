@@ -18,9 +18,18 @@ export const fetchTopHeadlines = async ({
   return res.json();
 };
 
-export async function fetchQuery(query: string, from?: string) {
-  let url = `/api/search?q=${encodeURIComponent(query)}`;
-  if (from) url += `&from=${encodeURIComponent(from)}`;
+export async function fetchQuery({
+  query,
+  fromDate,
+  currentPage,
+}: {
+  query: string;
+  fromDate?: string;
+  currentPage: number;
+}) {
+  let url = `/api/search?q=${encodeURIComponent(query)}&pageSize=10`;
+  if (fromDate) url += `&from=${encodeURIComponent(fromDate)}`;
+  if (currentPage) url += `&currentPage=${encodeURIComponent(currentPage)}`;
 
   const res = await fetch(url);
   if (!res.ok) throw new Error('Failed to fetch articles');

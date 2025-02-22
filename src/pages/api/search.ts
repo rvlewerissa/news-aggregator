@@ -10,13 +10,16 @@ export default async function getAllNews(req: Request) {
     const sources = searchParams.get('sources') || '';
     const from = searchParams.get('from') || '';
     const to = searchParams.get('to') || '';
+    const pageSize = searchParams.get('pageSize') || '10';
+    const page = searchParams.get('page') || '1';
 
     const url =
       `${NEWS_API_URL}/everything?apiKey=${NEWS_API_KEY}` +
       `${query ? `&q=${query}` : ''}` +
       `${sources ? `&sources=${sources}` : ''}` +
       `${from ? `&from=${from}` : ''}` +
-      `${to ? `&to=${to}` : ''}`;
+      `${to ? `&to=${to}` : ''}` +
+      `&pageSize=${pageSize}&page=${page}`;
 
     const response = await fetch(url);
     const data = await response.json();
