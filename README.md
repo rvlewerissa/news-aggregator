@@ -1,3 +1,11 @@
+🎉 **Feel free to check the live version of this app here** 🎉
+
+```
+https://news-aggregator-lai1.vercel.app
+```
+
+---
+
 ## Getting started
 
 **Production:**
