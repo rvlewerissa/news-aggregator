@@ -20,7 +20,7 @@ export const getStaticProps: GetStaticProps<GuardianPageProps> = async () => {
         totalResults: data.response.total,
       },
     },
-    revalidate: 60,
+    revalidate: 3600,
   };
 };
 

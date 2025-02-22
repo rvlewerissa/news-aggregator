@@ -52,7 +52,7 @@ export const getStaticProps: GetStaticProps<SourcePageProps> = async ({
         totalResults: data.totalResults,
       },
     },
-    revalidate: 3600,
+    revalidate: 60,
   };
 };
 

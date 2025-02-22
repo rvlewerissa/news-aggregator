@@ -89,7 +89,7 @@ Serverless endpoint is deployed to:
 https://news-aggregator-two-beta.vercel.app
 ```
 
-To use locally, simply replace the following on your `.env`:
+To use our local serverless codebase, simply replace the following on your `.env`:
 
 ```
 NEXT_SERVERLESS_API_URL=http://localhost:3000
