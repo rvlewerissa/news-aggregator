@@ -8,18 +8,18 @@ npm build
 npm start
 ```
 
+**Production mode using Docker:**
+
+```
+docker compose up --build
+```
+
 **Development Mode:**
 
 ```
 npm run install --legacy-peer-deps
 npm build
 npm dev
-```
-
-**Using docker:**
-
-```
-docker compose up --build
 ```
 
 ## Technical Decisions
