@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps<SourcePageProps> = async ({
   const source = params?.source as string;
 
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?source=${source}`
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?sources=${source}`
   );
   const data = await res.json();
 

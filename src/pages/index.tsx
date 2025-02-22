@@ -6,7 +6,7 @@ import { Article } from '@/types';
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?page=1&pageSize=10`
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/top-headlines?category=general&page=1&pageSize=10`
     );
     const data = await res.json();
 

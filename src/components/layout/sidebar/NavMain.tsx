@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { ChevronRight, MoreHorizontal, type LucideIcon } from 'lucide-react';
 
 import {
@@ -55,18 +56,20 @@ export default function NavMain({ items }: Props) {
                     <SidebarMenuSub>
                       {item.items?.map((subItem) => (
                         <SidebarMenuSubItem key={subItem.title}>
-                          <SidebarMenuSubButton asChild>
-                            <a href={subItem.url}>
+                          <Link href={subItem.url} passHref>
+                            <SidebarMenuSubButton>
                               <span>{subItem.title}</span>
-                            </a>
-                          </SidebarMenuSubButton>
+                            </SidebarMenuSubButton>
+                          </Link>
                         </SidebarMenuSubItem>
                       ))}
                       <SidebarMenuItem>
-                        <SidebarMenuButton className='text-sidebar-foreground/70'>
-                          <MoreHorizontal className='text-sidebar-foreground/70' />
-                          <span>More</span>
-                        </SidebarMenuButton>
+                        <Link href='/sources'>
+                          <SidebarMenuButton className='text-sidebar-foreground/70'>
+                            <MoreHorizontal className='text-sidebar-foreground/70' />
+                            <span>More</span>
+                          </SidebarMenuButton>
+                        </Link>
                       </SidebarMenuItem>
                     </SidebarMenuSub>
                   </CollapsibleContent>
@@ -76,12 +79,12 @@ export default function NavMain({ items }: Props) {
           } else {
             return (
               <SidebarMenuItem key={item.title}>
-                <SidebarMenuButton asChild>
-                  <a href={item.url}>
+                <Link href={item.url} passHref>
+                  <SidebarMenuButton>
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
-                  </a>
-                </SidebarMenuButton>
+                  </SidebarMenuButton>
+                </Link>
               </SidebarMenuItem>
             );
           }

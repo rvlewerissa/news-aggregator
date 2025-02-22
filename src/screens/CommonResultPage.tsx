@@ -24,12 +24,13 @@ export default function CommonResultPage({
 }: HomePageProps) {
   const router = useRouter();
   const category = router.query.category as string;
+  const source = router.query.source as string;
   const currentPage = Number(router.query.page) || 1;
   const totalPages = Math.ceil(initialMetadata.totalResults / pageSize);
 
   const { data, isPending, isError } = useQuery<NewsResponse>({
-    queryKey: ['top-headlines', currentPage, category],
-    queryFn: () => fetchTopHeadlines({ currentPage, category }),
+    queryKey: ['top-headlines', currentPage, category, source],
+    queryFn: () => fetchTopHeadlines({ currentPage, source, category }),
     initialData: { articles: initialArticles, metadata: initialMetadata },
     placeholderData: { articles: initialArticles, metadata: initialMetadata },
   });

@@ -3,14 +3,20 @@ import { DEFAULT_PAGE_SIZE } from '@/constant';
 export const fetchTopHeadlines = async ({
   currentPage,
   category,
+  source,
 }: {
   currentPage: number;
   category?: string;
+  source?: string
 }) => {
   let url = `/api/top-headlines?page=${currentPage}&pageSize=${DEFAULT_PAGE_SIZE}`;
 
   if (category) {
     url += `&category=${encodeURIComponent(category)}`;
+  }
+
+  if (source) {
+    url += `&sources=${encodeURIComponent(source)}`;
   }
 
   const res = await fetch(url);

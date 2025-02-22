@@ -6,10 +6,10 @@ export const runtime = 'edge';
 export default async function getTopHeadlines(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const category = searchParams.get('category') || 'general';
-    const country = searchParams.get('country') || 'us';
+    const category = searchParams.get('category');
+    const country = searchParams.get('country');
     const query = searchParams.get('q') || '';
-    const sources = searchParams.get('sources') || '';
+    const sources = searchParams.get('sources');
     const pageSize = searchParams.get('pageSize') || '10';
     const page = searchParams.get('page') || '1';
 

@@ -17,8 +17,6 @@ export default async function getGuardianNews(req: Request) {
     const response = await fetch(url);
     const data = await response.json();
 
-    console.log('guardian result: ', data);
-
     if (!response.ok) {
       return NextResponse.json(
         { error: data.message || 'Failed to fetch news' },
