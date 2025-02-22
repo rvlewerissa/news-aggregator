@@ -30,6 +30,14 @@ npm build
 npm dev
 ```
 
+### Caveat
+
+Third party API has rate limit policy which could cause problems to the following:
+
+- Deployment (SSG requires app to hit third API)
+- SSG revalidation (by default our app applies a 60 seconds revalidation)
+- Anything related to API call could results in `HTTP ERROR 429` (Too Many Requests)
+
 ## Technical Decisions
 
 ### Tech Stack
@@ -101,7 +109,3 @@ Since the project is relatively small and has a short development timeline, weâ€
 #### Environment Variable
 
 Added `.env` file just for the sake of this assignment, shouldn't be used on real project environment.
-
-### Caveat
-
-Since SSG revalidates every minute, there is a potential risk of hitting the third-party APIâ€™s rate limit.
