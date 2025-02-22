@@ -38,12 +38,11 @@ docker compose up --build
 | Route                 | Description                    |
 | --------------------- | ------------------------------ |
 | `/`                   | display headline news          |
-| `categories`          | display list of all categories |
 | `/sources`            | display list of all sources    |
-| `/categories/all`     | fetch from all categories      |
 | `/categories/[query]` | fetch from specific categories |
-| `/sources/all`        | fetch from all sources         |
+| `/sources`            | display list of all sources    |
 | `/sources/[query]`    | fetch from specific source     |
+| `/search`             | display search query           |
 
 ### Rendering strategy
 
