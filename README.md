@@ -65,6 +65,22 @@ We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), w
 - [New York Times](https://developer.nytimes.com/apis)
 - [BBC News](https://www.bbc.co.uk/developer/technology/apis.html)
 
+Integrated a custom serverless function in Next.js for this project to keep sensitive credentials (API key) hidden from the frontend and to consolidate communication through a single endpoint, ensuring better scalability in the future.
+
+The endpoint is also depoloyed separately to accomodate usage with Docker (cannot build SSG and fetch its own serverless endpoint on build time inside Docker).
+
+It is deployed to:
+
+```
+https://news-aggregator-two-beta.vercel.app
+```
+
+To use locally, simply replace the following on .env:
+
+```
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+```
+
 **Fetching strategy**
 
 - Use Next.js serverless function to combine multiple API sources, so client-side will fetch from a single source of truth.
@@ -75,3 +91,7 @@ We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), w
 ### Branching
 
 Since the project is relatively small and has a short development timeline, we’ll use a simple branching strategy, pushing directly to main. However, we’ll use [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format to keep the commit history organized. If the project grows in the future, we can adopt a trunk-based strategy or introduce feature and release branches as needed.
+
+#### Environment Variable
+
+Added .env file just for the sake of this assignment, shouldn't be used on real project environment.
