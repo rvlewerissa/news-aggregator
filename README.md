@@ -66,7 +66,7 @@ We will use SSG (Static Site Generation) + ISR (Incremental Static Rendering), w
 
 Integrated a custom serverless function in Next.js for this project to keep sensitive credentials (API key) hidden from the frontend and to consolidate communication through a single endpoint, ensuring better scalability in the future.
 
-The endpoint is also depoloyed separately to accomodate usage with Docker (cannot build SSG and fetch its own serverless endpoint on build time inside Docker).
+The endpoint is also deployed separately to accomodate usage with Docker (cannot build SSG and fetch its own serverless endpoint on build time inside Docker).
 
 It is deployed to:
 
