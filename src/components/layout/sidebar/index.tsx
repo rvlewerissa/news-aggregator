@@ -56,16 +56,60 @@ const data = {
       icon: RssIcon,
       items: [
         {
-          title: 'The Guardian',
-          url: '#',
+          title: 'ABC News',
+          url: '/sources/abc-news',
         },
         {
-          title: 'New York Times',
-          url: '#',
+          title: 'Ars Technica',
+          url: '/sources/ars-technica',
         },
         {
           title: 'BBC News',
-          url: '#',
+          url: '/sources/bbc-news',
+        },
+        {
+          title: 'Bleacher Report',
+          url: '/sources/bleacher-report',
+        },
+        {
+          title: 'Bloomberg',
+          url: '/sources/bloomberg',
+        },
+        {
+          title: 'BuzzFeed',
+          url: '/sources/buzzfeed',
+        },
+        {
+          title: 'CBC News',
+          url: '/sources/cbc-news',
+        },
+        {
+          title: 'CNN',
+          url: '/sources/cnn',
+        },
+        {
+          title: 'ESPN',
+          url: '/sources/espn',
+        },
+        {
+          title: 'Engadget',
+          url: '/sources/engadget',
+        },
+        {
+          title: 'Financial Post',
+          url: '/sources/financial-post',
+        },
+        {
+          title: 'Focus',
+          url: '/sources/focus',
+        },
+        {
+          title: 'Fortune',
+          url: '/sources/fortune',
+        },
+        {
+          title: 'Fox News',
+          url: '/sources/fox-news',
         },
       ],
     },
