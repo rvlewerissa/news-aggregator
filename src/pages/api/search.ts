@@ -3,23 +3,20 @@ import { NEWS_API_KEY, NEWS_API_URL } from '@/constant';
 
 export const runtime = 'edge';
 
-export default async function getTopHeadlines(req: Request) {
+export default async function getAllNews(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
-    const category = searchParams.get('category') || 'general';
-    const country = searchParams.get('country') || 'us';
     const query = searchParams.get('q') || '';
     const sources = searchParams.get('sources') || '';
-    const pageSize = searchParams.get('pageSize') || '10';
-    const page = searchParams.get('page') || '1';
+    const from = searchParams.get('from') || '';
+    const to = searchParams.get('to') || '';
 
     const url =
-      `${NEWS_API_URL}/top-headlines?apiKey=${NEWS_API_KEY}` +
-      `${category ? `&category=${category}` : ''}` +
-      `${country ? `&country=${country}` : ''}` +
+      `${NEWS_API_URL}/everything?apiKey=${NEWS_API_KEY}` +
       `${query ? `&q=${query}` : ''}` +
       `${sources ? `&sources=${sources}` : ''}` +
-      `&pageSize=${pageSize}&page=${page}`;
+      `${from ? `&from=${from}` : ''}` +
+      `${to ? `&to=${to}` : ''}`;
 
     const response = await fetch(url);
     const data = await response.json();

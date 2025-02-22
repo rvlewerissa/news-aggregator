@@ -25,10 +25,6 @@ const data = {
       isActive: true,
       items: [
         {
-          title: 'General',
-          url: '/categories/general',
-        },
-        {
           title: 'Business',
           url: '/categories/business',
         },

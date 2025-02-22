@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps<SearchPageProps> = async (
 
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL}/api/everything?${searchQuery}`
+      `${process.env.NEXT_PUBLIC_SITE_URL}/api/search?${searchQuery}`
     );
 
     if (!res.ok) throw new Error('Failed to fetch articles');

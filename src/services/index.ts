@@ -19,7 +19,7 @@ export const fetchTopHeadlines = async ({
 };
 
 export async function fetchQuery(query: string, from?: string) {
-  let url = `/api/everything?q=${encodeURIComponent(query)}`;
+  let url = `/api/search?q=${encodeURIComponent(query)}`;
   if (from) url += `&from=${encodeURIComponent(from)}`;
 
   const res = await fetch(url);

@@ -1,5 +1,7 @@
-const API_KEY = process.env.NEWS_API_KEY;
-const BASE_URL = 'https://newsapi.org/v2';
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
+const GUARDIAN_API_KEY = process.env.GUARDIAN_API_KEY;
+const NEWS_API_URL = 'https://newsapi.org/v2';
+const GUARDIAN_API_URL = 'https://content.guardianapis.com/search';
 const DEFAULT_PAGE_SIZE = 10;
 
 const CATEGORIES = [
@@ -33,4 +35,11 @@ const CATEGORIES = [
   },
 ];
 
-export { API_KEY, BASE_URL, DEFAULT_PAGE_SIZE, CATEGORIES };
+export {
+  NEWS_API_KEY,
+  NEWS_API_URL,
+  GUARDIAN_API_URL,
+  GUARDIAN_API_KEY,
+  DEFAULT_PAGE_SIZE,
+  CATEGORIES,
+};
