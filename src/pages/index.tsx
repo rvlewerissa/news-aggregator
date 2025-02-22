@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import HomePrimitive from '@/screens/CommonResultPage';
+import CommonResultPage from '@/screens/CommonResultPage';
 import MainLayout from '@/components/layout';
 import { Article } from '@/types';
 
@@ -41,7 +41,7 @@ export default function Home({ articles, metadata }: HomePageProps) {
       <h1 className='text-4xl font-bold tracking-tight font-mono capitalize'>
         Top Headlines
       </h1>
-      <HomePrimitive initialArticles={articles} initialMetadata={metadata} />
+      <CommonResultPage initialArticles={articles} initialMetadata={metadata} />
     </MainLayout>
   );
 }

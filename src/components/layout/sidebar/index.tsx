@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Newspaper, FolderSearch, RssIcon } from 'lucide-react';
+import { Newspaper, FolderSearch, RssIcon, CircleSmall } from 'lucide-react';
 
 import NavMain from '@/components/layout/sidebar/NavMain';
 import { Sidebar, SidebarContent, SidebarRail } from '@/components/ui/sidebar';
@@ -17,6 +17,11 @@ const data = {
       title: 'Top Headlines',
       url: '/',
       icon: Newspaper,
+    },
+    {
+      title: 'The Guardian Headlines',
+      url: '/sources/the-guardian',
+      icon: CircleSmall,
     },
     {
       title: 'Categories',
@@ -54,6 +59,7 @@ const data = {
       title: 'Sources',
       url: '#',
       icon: RssIcon,
+      isActive: true,
       items: [
         {
           title: 'ABC News',

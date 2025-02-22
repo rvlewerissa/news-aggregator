@@ -11,3 +11,10 @@ export interface Article {
   publishedAt: string;
   content: string | null;
 }
+
+export interface GuardianArticle {
+  webTitle: string;
+  sectionName: string;
+  webPublicationDate: string;
+  webUrl: string;
+}

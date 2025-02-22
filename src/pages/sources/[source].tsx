@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from 'next';
 import MainLayout from '@/components/layout';
-import HomePrimitive from '@/screens/CommonResultPage';
+import CommonResultPage from '@/screens/CommonResultPage';
 import { Article } from '@/types';
 
 interface SourcePageProps {
@@ -66,7 +66,7 @@ export default function SourcePage({
       <h1 className='text-4xl font-bold tracking-tight font-mono capitalize'>
         {source.replace(/-/g, ' ')}
       </h1>
-      <HomePrimitive initialArticles={articles} initialMetadata={metadata} />
+      <CommonResultPage initialArticles={articles} initialMetadata={metadata} />
     </MainLayout>
   );
 }

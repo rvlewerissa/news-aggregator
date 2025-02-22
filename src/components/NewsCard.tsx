@@ -6,7 +6,7 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { formatDistanceToNow } from 'date-fns';
-import { Article } from '@/types';
+import { Article, GuardianArticle } from '@/types';
 
 type NewsCardProps = {
   article: Article;
@@ -46,6 +46,31 @@ export default function NewsCard({ article }: NewsCardProps) {
             </span>
           </>
         )}
+      </CardFooter>
+    </Card>
+  );
+}
+
+type GuardianNewsProp = {
+  article: GuardianArticle;
+};
+
+export function GuardianNewsCard({ article }: GuardianNewsProp) {
+  return (
+    <Card className='flex flex-col'>
+      <CardHeader className='flex-1'>
+        <CardTitle className='line-clamp-2 leading-5'>
+          <a href={article.webUrl} target='_blank' className='hover:underline'>
+            {article.webTitle}
+          </a>
+        </CardTitle>
+      </CardHeader>
+      <CardFooter className='gap-2'>
+        <span className='text-xs font-semibold line-clamp-1'>
+          {formatDistanceToNow(new Date(article.webPublicationDate), {
+            addSuffix: true,
+          })}
+        </span>
       </CardFooter>
     </Card>
   );
