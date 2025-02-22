@@ -1,7 +1,5 @@
 ## Getting started
 
-To run locally:
-
 **Production:**
 
 ```
