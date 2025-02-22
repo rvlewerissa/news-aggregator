@@ -27,6 +27,7 @@ type Props = {
       title: string;
       url: string;
     }[];
+    moreLink?: string;
   }[];
 };
 
@@ -63,14 +64,16 @@ export default function NavMain({ items }: Props) {
                           </Link>
                         </SidebarMenuSubItem>
                       ))}
-                      <SidebarMenuItem>
-                        <Link href='/sources'>
-                          <SidebarMenuButton className='text-sidebar-foreground/70'>
-                            <MoreHorizontal className='text-sidebar-foreground/70' />
-                            <span>More</span>
-                          </SidebarMenuButton>
-                        </Link>
-                      </SidebarMenuItem>
+                      {item.moreLink && (
+                        <SidebarMenuItem>
+                          <Link href='/sources'>
+                            <SidebarMenuButton className='text-sidebar-foreground/70'>
+                              <MoreHorizontal className='text-sidebar-foreground/70' />
+                              <span>More</span>
+                            </SidebarMenuButton>
+                          </Link>
+                        </SidebarMenuItem>
+                      )}
                     </SidebarMenuSub>
                   </CollapsibleContent>
                 </SidebarMenuItem>

@@ -118,6 +118,7 @@ const data = {
           url: '/sources/fox-news',
         },
       ],
+      moreLink: '/sources',
     },
   ],
 };
